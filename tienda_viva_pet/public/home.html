@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVA PET MX - Tienda para Mascotas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans&family=Comic+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde: #2E8B57;
+            --naranja: #FF6B35;
+            --azul: #3A86FF;
+            --beige: #F4E9CD;
+            --gris: #5A5A5A;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            color: var(--gris);
+        }
+
+        .header {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 150px;
+            margin-right: 2rem;
+        }
+
+        .menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: var(--gris);
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: var(--naranja);
+        }
+
+        .search-bar {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 0.5rem;
+            border: 2px solid var(--verde);
+            border-radius: 25px;
+            width: 250px;
+        }
+
+        .hero {
+            background: var(--beige);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--verde);
+            font-size: 2.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .product-price {
+            color: var(--naranja);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background: var(--verde);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer {
+            background: var(--gris);
+            color: white;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <img src="logo.png" alt="VIVA PET MX" class="logo">
+            <ul class="menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Buscar productos...">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Todo para consentir a tu mascota 🐾</h1>
+            <button class="btn-primary">Ver Productos</button>
+        </section>
+
+        <section class="product-grid">
+            <article class="product-card">
+                <img src=https://cdn.pixabay.com/photo/2020/05/16/01/11/dog-food-5175619_1280.jpg alt="Producto" class="product-image">
+                <h3>Alimento Premium para Perros</h3>
+                <p class="product-price">$450.00 MXN</p>
+                <button class="btn-primary">Añadir al carrito</button>
+            </article>
+            <article class="product-card">
+                <img src="https://cdn.pixabay.com/photo/2019/11/07/08/40/puppy-4608266_1280.jpg" alt="Producto" class="product-image">
+                <h3>Pensión Premium para Perros</h3>
+                <p class="product-price">$850.00 MXN/NOCHE</p>
+                <button class="btn-primary">Añadir al carrito</button>
+            </article>
+        </section>
+        <section class="product-grid">
+            <article class="product-card">
+                <img src="https://cdn.pixabay.com/photo/2021/01/02/23/55/dog-5883275_1280.jpg" alt="Producto" class="product-image">
+                <h3>Servicio de estética canina y felina</h3>
+                <p class="product-price">$150.00-$500.00 MXN</p>
+                <button class="btn-primary">Añadir al carrito</button>
+            </article>
+            <article class="product-card">
+                <img src="https://cdn.pixabay.com/photo/2015/11/17/13/13/bulldog-1047518_1280.jpg" alt="Producto" class="product-image">
+                <h3>Servicios médicos veterinarios</h3>
+                <p class="product-price"></p>
+                <button class="btn-primary">Añadir al carrito</button>
+            </article>
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h4>Contacto</h4>
+                <p>📞 722 892 5681</p>
+                <p>📧 hola@vivapet.mx</p>
+            </div>
+            <div>
+                <h4>Enlaces</h4>
+                <p><a href="#">Políticas de envío</a></p>
+                <p><a href="#">Preguntas frecuentes</a></p>
+            </div>
+            <div>
+                <h4>Síguenos</h4>
+                <p>Instagram</p>
+                <p>Facebook</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
