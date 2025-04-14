@@ -32,7 +32,6 @@
             background-color: var(--gris-claro);
         }
 
-        /* Header */
         .header {
             background: white;
             padding: 1rem;
@@ -175,7 +174,6 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://cdn.pixabay.com/photo/2017/09/25/13/14/dog-2785077_1280.jpg');
             background-size: cover;
@@ -236,7 +234,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Product Grid */
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
@@ -394,7 +391,6 @@
             border-color: var(--naranja);
         }
 
-        /* Services Section */
         .services {
             background: var(--beige);
             padding: 4rem 2rem;
@@ -443,7 +439,6 @@
             font-size: 0.95rem;
         }
 
-        /* Testimonials */
         .testimonials {
             padding: 4rem 2rem;
             background: white;
@@ -511,7 +506,6 @@
             font-size: 0.8rem;
         }
 
-        /* Newsletter */
         .newsletter {
             background: var(--verde);
             color: white;
@@ -569,7 +563,6 @@
             background: #e05a2b;
         }
 
-        /* Footer */
         .footer {
             background: var(--gris);
             color: white;
@@ -681,7 +674,6 @@
             opacity: 0.7;
         }
 
-        /* Cart Modal */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -831,7 +823,6 @@
             color: #ddd;
         }
 
-        /* Overlay */
         .overlay {
             position: fixed;
             top: 0;
@@ -850,7 +841,6 @@
             visibility: visible;
         }
 
-        /* Mobile Menu */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -898,7 +888,6 @@
             font-size: 1.1rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 992px) {
             .nav-container {
                 flex-wrap: wrap;
@@ -977,7 +966,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <nav class="nav-container">
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1006,7 +994,6 @@
         </nav>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-mobile-menu" id="closeMobileMenu">
             <i class="fas fa-times"></i>
@@ -1021,12 +1008,9 @@
         </ul>
     </div>
 
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="hero" id="inicio">
             <h1>Todo para consentir a tu mascota 🐾</h1>
             <p>Productos premium y servicios especializados para el bienestar de tus mejores amigos</p>
@@ -1034,7 +1018,6 @@
             <a href="#servicios" class="btn btn-secondary">Nuestros Servicios</a>
         </section>
 
-        <!-- Featured Products -->
         <section id="productos">
             <h2 class="section-title">Nuestros Productos Destacados</h2>
             <div class="product-grid">
@@ -1147,7 +1130,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section class="services" id="servicios">
             <div class="services-container">
                 <h2 class="section-title">Nuestros Servicios</h2>
@@ -1177,7 +1159,438 @@
             </div>
         </section>
 
-        <!-- Testimonials -->
         <section class="testimonials">
             <div class="testimonials-container">
-               
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Excelente servicio veterinario. Mi perro tuvo una emergencia y lo atendieron de inmediato con mucho profesionalismo.</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="María González" class="author-avatar">
+                            <div class="author-info">
+                                <h4>María González</h4>
+                                <p>Dueña de Max (Golden Retriever)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">El alimento premium ha mejorado notablemente el pelaje y energía de mis gatos. ¡Vale cada peso!</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Martínez" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Carlos Martínez</h4>
+                                <p>Dueño de Luna y Sol (Gatos)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Dejé a mi perro en la pensión durante mis vacaciones y estuvo feliz. Me enviaban fotos diarias.</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ana Sánchez" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Ana Sánchez</h4>
+                                <p>Dueña de Rocky (Bulldog Francés)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter">
+            <div class="newsletter-container">
+                <h2>¡Suscríbete a nuestro newsletter!</h2>
+                <p>Recibe ofertas exclusivas, consejos para el cuidado de tu mascota y novedades sobre nuestros servicios.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="newsletter-btn">Suscribirse</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-about">
+                <img src="logo.png" alt="VIVA PET MX" class="footer-logo">
+                <p>Somos una tienda especializada en productos y servicios premium para mascotas, comprometidos con su bienestar y felicidad.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>Enlaces rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Categorías</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Alimentos</a></li>
+                    <li><a href="#">Accesorios</a></li>
+                    <li><a href="#">Juguetes</a></li>
+                    <li><a href="#">Cuidado e Higiene</a></li>
+                    <li><a href="#">Servicios</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contacto</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Av. Paseo de la Reforma 123, CDMX, México</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>722 892 5681</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>hola@vivapet.mx</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <span>Lunes a Sábado: 9:00 - 20:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 VIVA PET MX. Todos los derechos reservados. | <a href="#">Política de privacidad</a> | <a href="#">Términos y condiciones</a></p>
+        </div>
+    </footer>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h2>Tu Carrito 🛒</h2>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="cart-summary" id="cartSummary">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span>$<span id="cartTotal">0.00</span> MXN</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Proceder al pago</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.querySelector('.cart-modal').classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Cart Functionality
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartItemsContainer = document.getElementById('cartItemsContainer');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCounter = document.querySelector('.cart-counter');
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Toggle Cart Modal
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Add to Cart
+        const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productCard = button.closest('.product-card');
+                const product = {
+                    id: productCard.querySelector('h3').textContent.trim(),
+                    name: productCard.querySelector('h3').textContent.trim(),
+                    price: parseFloat(productCard.querySelector('.product-price').textContent.replace(/[^0-9.]/g, '')),
+                    image: productCard.querySelector('.product-image').src,
+                    quantity: 1
+                };
+
+                addToCart(product);
+                updateCartUI();
+                showAddedToCartNotification(product.name);
+            });
+        });
+
+        function addToCart(product) {
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function updateCartUI() {
+            // Update cart counter
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCounter.textContent = totalItems;
+            
+            // Update cart items list
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                `;
+                document.getElementById('cartSummary').style.display = 'none';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    cartItemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <p class="cart-item-price">$${item.price.toFixed(2)} MXN</p>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                                <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+                
+                cartTotal.textContent = total.toFixed(2);
+                document.getElementById('cartSummary').style.display = 'block';
+                
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        updateQuantity(id, -1);
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        updateQuantity(id, 1);
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-input').forEach(input => {
+                    input.addEventListener('change', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        const newQuantity = parseInt(e.target.value);
+                        setQuantity(id, newQuantity);
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const id = e.target.closest('button').getAttribute('data-id');
+                        removeItem(id);
+                    });
+                });
+            }
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity < 1) {
+                    item.quantity = 1;
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartUI();
+            }
+        }
+
+        function setQuantity(id, quantity) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity = quantity;
+                
+                if (item.quantity < 1) {
+                    item.quantity = 1;
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartUI();
+            }
+        }
+
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function showAddedToCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <span>${productName} añadido al carrito</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Checkout Button
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length > 0) {
+                // Here you would normally redirect to checkout page
+                alert('Redirigiendo al proceso de pago...');
+                // window.location.href = '/checkout';
+            }
+        });
+
+        // Initialize cart UI
+        updateCartUI();
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('open');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            const email = emailInput.value;
+            
+            // Here you would normally send the email to your server
+            alert(`Gracias por suscribirte con el correo: ${email}`);
+            emailInput.value = '';
+        });
+
+        // Notification style
+        const style = document.createElement('style');
+        style.textContent = `
+            .notification {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--verde);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                opacity: 0;
+                transition: opacity 0.3s;
+                z-index: 1000;
+            }
+            
+            .notification.show {
+                opacity: 1;
+            }
+            
+            .notification i {
+                font-size: 1.2rem;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
