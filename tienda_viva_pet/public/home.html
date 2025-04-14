@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIVA PET MX - Tienda para Mascotas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans&family=Comic+Neue&display=swap" rel="stylesheet">
+    <meta name="description" content="VIVA PET MX - Tienda especializada en productos y servicios premium para mascotas. Ofrecemos alimentos, accesorios, servicios veterinarios y estética canina.">
+    <meta name="keywords" content="mascotas, perros, gatos, alimento premium, veterinario, estética canina, tienda mascotas México">
+    <title>VIVA PET MX - Tienda Premium para Mascotas | Productos y Servicios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:wght@400;600&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --verde: #2E8B57;
@@ -12,21 +15,36 @@
             --azul: #3A86FF;
             --beige: #F4E9CD;
             --gris: #5A5A5A;
+            --gris-claro: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             color: var(--gris);
+            line-height: 1.6;
+            background-color: var(--gris-claro);
         }
 
         .header {
             background: white;
             padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.5rem 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -34,11 +52,18 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .logo {
             width: 150px;
+            height: auto;
             margin-right: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .menu {
@@ -53,87 +78,495 @@
             text-decoration: none;
             color: var(--gris);
             font-family: 'Poppins', sans-serif;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
         .menu a:hover {
             color: var(--naranja);
         }
 
-        .search-bar {
+        .menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--naranja);
+            transition: width 0.3s;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
             margin-left: auto;
             display: flex;
             align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-bar {
+            position: relative;
         }
 
         .search-input {
-            padding: 0.5rem;
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
             border: 2px solid var(--verde);
             border-radius: 25px;
             width: 250px;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+            width: 280px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--verde);
+        }
+
+        .cart-icon {
+            position: relative;
+            color: var(--gris);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .cart-icon:hover {
+            color: var(--naranja);
+        }
+
+        .cart-counter {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--naranja);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gris);
+            cursor: pointer;
         }
 
         .hero {
-            background: var(--beige);
-            padding: 4rem 2rem;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://cdn.pixabay.com/photo/2017/09/25/13/14/dog-2785077_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 2rem;
             text-align: center;
+            color: white;
+            margin-bottom: 3rem;
         }
 
         .hero h1 {
             font-family: 'Poppins', sans-serif;
-            color: var(--verde);
-            font-size: 2.5rem;
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .product-price {
-            color: var(--naranja);
-            font-family: 'Poppins', sans-serif;
+        .hero p {
             font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            border: none;
         }
 
         .btn-primary {
             background: var(--verde);
             color: white;
-            padding: 0.8rem 1.5rem;
+        }
+
+        .btn-primary:hover {
+            background: #267d4d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background: var(--naranja);
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: #e05a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--verde);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--naranja);
+            margin: 0.5rem auto 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--naranja);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            height: 200px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gris);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .product-category {
+            color: var(--azul);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            color: var(--naranja);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .product-rating {
+            color: #FFC107;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn-add-to-cart {
+            background: var(--verde);
+            color: white;
+            padding: 0.6rem 1.2rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            flex-grow: 1;
+        }
+
+        .btn-add-to-cart:hover {
+            background: #267d4d;
+        }
+
+        .btn-wishlist {
+            background: white;
+            color: var(--gris);
+            border: 1px solid #ddd;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-wishlist:hover {
+            color: var(--naranja);
+            border-color: var(--naranja);
+        }
+
+        .services {
+            background: var(--beige);
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--verde);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gris);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .testimonials {
+            padding: 4rem 2rem;
+            background: white;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--gris-claro);
+            padding: 1.5rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: rgba(46, 139, 87, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .author-info h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gris);
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .newsletter {
+            background: var(--verde);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter h2 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background: var(--naranja);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #e05a2b;
         }
 
         .footer {
             background: var(--gris);
             color: white;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 4rem 2rem 2rem;
         }
 
         .footer-content {
@@ -141,96 +574,591 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
-        @media (max-width: 768px) {
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--naranja);
+            transform: translateY(-3px);
+        }
+
+        .footer h3 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--naranja);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+
+        .contact-info i {
+            margin-right: 0.8rem;
+            color: var(--naranja);
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--gris);
+            font-size: 1.3rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gris);
+        }
+
+        .cart-items {
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--naranja);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: #eee;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 0.2rem;
+        }
+
+        .remove-item {
+            color: #ff4d4d;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            align-self: flex-start;
+        }
+
+        .cart-summary {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--verde);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #267d4d;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 1002;
+            transition: left 0.3s;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            left: 0;
+        }
+
+        .close-mobile-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu-logo {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu-list {
+            list-style: none;
+        }
+
+        .mobile-menu-list li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu-list a {
+            text-decoration: none;
+            color: var(--gris);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 992px) {
             .nav-container {
                 flex-wrap: wrap;
             }
             
             .menu {
-                order: 3;
-                width: 100%;
-                justify-content: center;
-                margin-top: 1rem;
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                margin-left: auto;
+            }
+            
+            .nav-right {
+                order: 2;
+                margin-left: auto;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
-        
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 30px;
+                padding: 0.8rem;
+            }
+            
+            .cart-modal {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <nav class="nav-container">
-            <img src="logo.png" alt="VIVA PET MX" class="logo">
-            <ul class="menu">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#">
+                <img src="logo.png" alt="VIVA PET MX" class="logo">
+            </a>
+            <ul class="menu" id="mainMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Buscar productos...">
+            <div class="nav-right">
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Buscar productos...">
+                </div>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-counter">0</span>
+                </div>
             </div>
         </nav>
     </header>
 
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-mobile-menu" id="closeMobileMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <img src="logo.png" alt="VIVA PET MX" class="mobile-menu-logo">
+        <ul class="mobile-menu-list">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
     <main>
-        <section class="hero">
+        <section class="hero" id="inicio">
             <h1>Todo para consentir a tu mascota 🐾</h1>
-            <button class="btn-primary">Ver Productos</button>
+            <p>Productos premium y servicios especializados para el bienestar de tus mejores amigos</p>
+            <a href="#productos" class="btn btn-primary">Ver Productos</a>
+            <a href="#servicios" class="btn btn-secondary">Nuestros Servicios</a>
         </section>
 
-        <section class="product-grid">
-            <article class="product-card">
-                <img src=https://cdn.pixabay.com/photo/2020/05/16/01/11/dog-food-5175619_1280.jpg alt="Producto" class="product-image">
-                <h3>Alimento Premium para Perros</h3>
-                <p class="product-price">$450.00 MXN</p>
-                <button class="btn-primary">Añadir al carrito</button>
-            </article>
-            <article class="product-card">
-                <img src="https://cdn.pixabay.com/photo/2019/11/07/08/40/puppy-4608266_1280.jpg" alt="Producto" class="product-image">
-                <h3>Pensión Premium para Perros</h3>
-                <p class="product-price">$850.00 MXN/NOCHE</p>
-                <button class="btn-primary">Añadir al carrito</button>
-            </article>
-        </section>
-        <section class="product-grid">
-            <article class="product-card">
-                <img src="https://cdn.pixabay.com/photo/2021/01/02/23/55/dog-5883275_1280.jpg" alt="Producto" class="product-image">
-                <h3>Servicio de estética canina y felina</h3>
-                <p class="product-price">$150.00-$500.00 MXN</p>
-                <button class="btn-primary">Añadir al carrito</button>
-            </article>
-            <article class="product-card">
-                <img src="https://cdn.pixabay.com/photo/2015/11/17/13/13/bulldog-1047518_1280.jpg" alt="Producto" class="product-image">
-                <h3>Servicios médicos veterinarios</h3>
-                <p class="product-price"></p>
-                <button class="btn-primary">Añadir al carrito</button>
-            </article>
-        </section>
-        
-    </main>
+        <section id="productos">
+            <h2 class="section-title">Nuestros Productos Destacados</h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <span class="product-badge">Nuevo</span>
+                    <div class="product-image-container">
+                        <img src="https://cdn.pixabay.com/photo/2020/05/16/01/11/dog-food-5175619_1280.jpg" alt="Alimento Premium para Perros" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Alimentos</span>
+                        <h3>Alimento Premium para Perros</h3>
+                        <p class="product-description">Formulado con ingredientes naturales para una nutrición completa y equilibrada.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(24)</span>
+                        </div>
+                        <p class="product-price">$450.00 MXN</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </article>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div>
-                <h4>Contacto</h4>
-                <p>📞 722 892 5681</p>
-                <p>📧 hola@vivapet.mx</p>
+                <article class="product-card">
+                    <span class="product-badge">Más vendido</span>
+                    <div class="product-image-container">
+                        <img src="https://cdn.pixabay.com/photo/2019/11/07/08/40/puppy-4608266_1280.jpg" alt="Pensión Premium para Perros" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Servicios</span>
+                        <h3>Pensión Premium para Perros</h3>
+                        <p class="product-description">Espacio seguro y cómodo para tu mascota cuando no estás en casa, con atención personalizada.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(48)</span>
+                        </div>
+                        <p class="product-price">$850.00 MXN/NOCHE</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://cdn.pixabay.com/photo/2021/01/02/23/55/dog-5883275_1280.jpg" alt="Servicio de estética canina y felina" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Servicios</span>
+                        <h3>Servicio de estética canina y felina</h3>
+                        <p class="product-description">Baño terapéutico, corte de pelo profesional y cuidado de uñas para mantener a tu mascota impecable.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(36)</span>
+                        </div>
+                        <p class="product-price">$150.00-$500.00 MXN</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <span class="product-badge">Oferta</span>
+                    <div class="product-image-container">
+                        <img src="https://cdn.pixabay.com/photo/2015/11/17/13/13/bulldog-1047518_1280.jpg" alt="Servicios médicos veterinarios" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Servicios</span>
+                        <h3>Servicios médicos veterinarios</h3>
+                        <p class="product-description">Consultas, vacunación, desparasitación y atención especializada para la salud de tu mascota.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(62)</span>
+                        </div>
+                        <p class="product-price">Desde $300.00 MXN</p>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-add-to-cart">Añadir al carrito</button>
+                        <button class="btn-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </article>
             </div>
-            <div>
-                <h4>Enlaces</h4>
-                <p><a href="#">Políticas de envío</a></p>
-                <p><a href="#">Preguntas frecuentes</a></p>
+        </section>
+
+        <section class="services" id="servicios">
+            <div class="services-container">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>Estética Profesional</h3>
+                        <p>Baños terapéuticos, cortes de pelo según raza y cuidado de uñas con productos de primera calidad.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h3>Atención Veterinaria</h3>
+                        <p>Consultas, vacunación, desparasitación y servicios de emergencia con profesionales certificados.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Pensión Canina</h3>
+                        <p>Espacios seguros y cómodos para tu mascota cuando viajes o no puedas estar con ella.</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4>Síguenos</h4>
-                <p>Instagram</p>
-                <p>Facebook</p>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+        </section>
+
+        <section class="testimonials">
+            <div class="testimonials-container">
+               
